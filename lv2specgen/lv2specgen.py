@@ -41,6 +41,7 @@ import time
 import xml.sax.saxutils
 import xml.dom
 import xml.dom.minidom
+import defusedxml.minidom
 
 __date__ = "2011-10-26"
 __version__ = __date__.replace("-", ".")
@@ -1213,7 +1214,7 @@ def load_tags(path, docdir):
                 sym,
             )
 
-    tagdoc = xml.dom.minidom.parse(path)
+    tagdoc = defusedxml.minidom.parse(path)
     root = tagdoc.documentElement
     linkmap = {}
     for cn in root.childNodes:
